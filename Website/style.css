@@ -1,0 +1,81 @@
+/* FILE: style.css */
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #f4fff6;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 50px;
+  background: white;
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: bold;
+  color: green;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: black;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px;
+}
+
+.hero h1 {
+  font-size: 60px;
+}
+
+.hero img {
+  width: 500px;
+  border-radius: 20px;
+}
+
+button {
+  padding: 15px 30px;
+  border: none;
+  background: green;
+  color: white;
+  border-radius: 10px;
+}
+
+.page-container {
+  padding: 80px;
+  text-align: center;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  margin-top: 20px;
+  border-radius: 20px;
+}
+
+.phone {
+  width: 300px;
+  background: black;
+  padding: 20px;
+  margin: auto;
+  border-radius: 30px;
+}
+
+.app-card {
+  background: white;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 15px;
+}
+
+
+// FILE: script.js
+function showMessage() {
+  alert('Welcome to PantryPal!');
