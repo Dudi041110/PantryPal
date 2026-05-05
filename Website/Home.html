@@ -1,6 +1,13 @@
+<!-- ===================================================== -->
+<!-- PantryPal Multi-Page Advertising Website              -->
+<!-- Create each section below as a separate file.          -->
+<!-- Put your images inside the folder named: assests       -->
+<!-- Example: assests/fridge.jpg                           -->
+<!-- ===================================================== -->
+
+
 <!-- ============================= -->
 <!-- FILE: index.html -->
-<!-- PantryPal Advertising Website -->
 <!-- ============================= -->
 
 <!DOCTYPE html>
@@ -8,7 +15,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PantryPal</title>
+  <title>PantryPal | Home</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,23 +23,24 @@
   <div class="navbar">
     <div class="logo">PantryPal</div>
     <div class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#why">Why PantryPal</a>
-      <a href="#features">Features</a>
-      <a href="#buy">Get Started</a>
+      <a href="Home.html">Home</a>
+      <a href="product.html">Product</a>
+      <a href="features.html">Features</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </div>
   </div>
 
-  <div class="hero" id="home">
+  <div class="hero">
     <div class="hero-text">
       <p class="tagline">AI Smart Fridge Assistant</p>
       <h1>Waste Less. Save More. Eat Smarter.</h1>
       <p class="hero-description">
-        PantryPal is an AI-powered fridge assistant made for families. It tracks food, sends expiry alerts, suggests recipes, and helps you reduce waste every day.
+        PantryPal is an AI-powered fridge assistant made for families. It tracks food, sends expiry alerts, suggests recipes, and helps reduce waste every day.
       </p>
       <div class="hero-buttons">
-        <a href="#buy" class="main-btn">Get PantryPal</a>
-        <a href="#features" class="outline-btn">See Features</a>
+        <a href="product.html" class="main-btn">Explore Product</a>
+        <a href="features.html" class="outline-btn">See Features</a>
       </div>
     </div>
 
@@ -50,61 +58,69 @@
   </div>
 
   <div class="stats-section">
-    <div class="stat-box">
+    <div class="stat-box metallic-card">
       <h2>40%</h2>
       <p>Less Food Waste</p>
     </div>
-    <div class="stat-box">
+    <div class="stat-box metallic-card">
       <h2>24/7</h2>
       <p>Smart Monitoring</p>
     </div>
-    <div class="stat-box">
+    <div class="stat-box metallic-card">
       <h2>AED 2000+</h2>
       <p>Possible Yearly Savings</p>
     </div>
   </div>
 
-  <div class="section" id="why">
-    <p class="section-label">Why Choose PantryPal?</p>
-    <h1>A Smarter Kitchen for Every Family</h1>
+  <div class="section game-section">
+    <p class="section-label">PantryPal Rewards</p>
+    <h1>Cook, Earn Points, and Level Up</h1>
     <p class="section-subtitle">
-      Families often waste food because they forget what is inside the fridge. PantryPal solves this problem with AI, smart tracking, and helpful reminders.
+      Families can complete cooking challenges using ingredients before they expire. Every challenge earns points that unlock badges, rewards, and fun chef themes.
     </p>
 
-    <div class="card-grid">
-      <div class="feature-card">
-        <h2>💰 Save Money</h2>
-        <p>Buy only what you need and use food before it expires.</p>
+    <div class="game-grid">
+      <div class="challenge-card bubble-card">
+        <h2>🍳 Breakfast Challenge</h2>
+        <p>Use 3 ingredients from your fridge before 10 AM.</p>
+        <span>+120 Points</span>
       </div>
-      <div class="feature-card">
-        <h2>🌱 Reduce Waste</h2>
-        <p>Protect the environment by throwing away less food.</p>
+
+      <div class="challenge-card bubble-card">
+        <h2>🥗 No-Waste Dinner</h2>
+        <p>Cook a meal using food close to expiry.</p>
+        <span>+200 Points</span>
       </div>
-      <div class="feature-card">
-        <h2>👨‍👩‍👧 Family Friendly</h2>
-        <p>Simple alerts and shared lists help the whole family stay organized.</p>
+
+      <div class="challenge-card bubble-card">
+        <h2>👨‍👩‍👧 Family Cook-Off</h2>
+        <p>Complete a recipe together as a family.</p>
+        <span>+300 Points</span>
       </div>
     </div>
   </div>
 
-  <div class="section green-section" id="features">
-    <p class="section-label light">Main Features</p>
-    <h1>Everything Your Fridge Should Do</h1>
+  <div class="section chef-section">
+    <div class="chef-text">
+      <p class="section-label">Meet Cheffy AI</p>
+      <h1>Your Fun Cooking Assistant</h1>
+      <p>
+        Cheffy AI guides families through recipes, gives cooking tips, and makes challenges feel fun. Users can choose different styles like Normal Chef, Cat Chef, Robot Chef, or Fancy Chef.
+      </p>
+    </div>
 
-    <div class="feature-list">
-      <div>🥗 AI food recognition</div>
-      <div>⏰ Expiry date reminders</div>
-      <div>🍳 Recipe suggestions</div>
-      <div>🛒 Smart shopping lists</div>
-      <div>📱 Mobile family alerts</div>
-      <div>📊 Food waste tracking</div>
+    <div class="chef-grid">
+      <div class="chef-card">👨‍🍳<h2>Normal Chef</h2></div>
+      <div class="chef-card">🐱‍👨‍🍳<h2>Cat Chef</h2></div>
+      <div class="chef-card">🤖<h2>Robot Chef</h2></div>
+      <div class="chef-card">🎩<h2>Fancy Chef</h2></div>
     </div>
   </div>
 
-  <div class="ad-banner" id="buy">
+  <div class="ad-banner">
     <h1>Bring PantryPal Into Your Home</h1>
     <p>Make grocery management easier, smarter, and better for your family.</p>
-    <button onclick="showMessage()">Order Now</button>
+    <a href="contact.html" class="main-btn">Get Started</a>
   </div>
 
   <div class="footer">
@@ -112,8 +128,5 @@
     <p>Artificial Intelligence for the Family | Engineering Hackathon Project</p>
   </div>
 
-  <script src="script.js"></script>
 </body>
 </html>
-
-
