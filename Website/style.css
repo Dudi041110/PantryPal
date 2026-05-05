@@ -19,7 +19,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 22px 60px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
   position: sticky;
   top: 0;
@@ -64,13 +64,19 @@ body {
   letter-spacing: 2px;
 }
 
-.hero h1 {
-  font-size: 68px;
+.light {
+  color: #bbf7d0;
+}
+
+.hero h1,
+.page-header h1 {
+  font-size: 62px;
   line-height: 1.05;
   margin: 20px 0;
 }
 
-.hero-description {
+.hero-description,
+.page-header p {
   font-size: 21px;
   line-height: 1.7;
   color: #4b5563;
@@ -84,11 +90,13 @@ body {
 
 .main-btn,
 .outline-btn {
+  display: inline-block;
   padding: 16px 32px;
   border-radius: 14px;
   text-decoration: none;
   font-weight: bold;
   font-size: 18px;
+  transition: 0.3s;
 }
 
 .main-btn {
@@ -103,11 +111,18 @@ body {
   border: 2px solid #16a34a;
 }
 
+.main-btn:hover,
+.outline-btn:hover,
+button:hover {
+  transform: scale(1.04);
+}
+
 .hero-image-box {
   position: relative;
 }
 
-.hero-image-box img {
+.hero-image-box img,
+.image-panel img {
   width: 520px;
   height: 520px;
   object-fit: cover;
@@ -152,6 +167,12 @@ body {
   box-shadow: 0 8px 20px rgba(0,0,0,0.06);
 }
 
+.metallic-card {
+  background: linear-gradient(145deg, #ffffff, #dff7e7, #ffffff);
+  border: 1px solid rgba(255,255,255,0.8);
+  box-shadow: inset 0 0 18px rgba(255,255,255,0.8), 0 12px 28px rgba(22,163,74,0.18);
+}
+
 .stat-box h2 {
   color: #16a34a;
   font-size: 42px;
@@ -161,6 +182,10 @@ body {
 .section {
   padding: 90px 80px;
   text-align: center;
+}
+
+.white-section {
+  background: white;
 }
 
 .section h1 {
@@ -183,10 +208,6 @@ body {
   letter-spacing: 2px;
 }
 
-.light {
-  color: #bbf7d0;
-}
-
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -194,7 +215,8 @@ body {
   margin-top: 55px;
 }
 
-.feature-card {
+.feature-card,
+.info-card {
   background: white;
   padding: 35px;
   border-radius: 28px;
@@ -202,42 +224,115 @@ body {
   transition: 0.3s;
 }
 
-.feature-card:hover {
+.feature-card:hover,
+.info-card:hover {
   transform: translateY(-10px);
 }
 
-.feature-card h2 {
+.feature-card h2,
+.info-card h2 {
   font-size: 26px;
 }
 
-.feature-card p {
+.feature-card p,
+.info-card p {
   color: #4b5563;
   font-size: 18px;
   line-height: 1.6;
 }
 
-.green-section {
-  background: #16a34a;
-  color: white;
+.game-section {
+  background: radial-gradient(circle at top left, #dcfce7, #ffffff 55%);
 }
 
-.green-section h1 {
-  color: white;
-}
-
-.feature-list {
+.game-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
+  gap: 30px;
   margin-top: 55px;
 }
 
-.feature-list div {
-  background: rgba(255,255,255,0.15);
-  padding: 28px;
-  border-radius: 22px;
-  font-size: 20px;
+.challenge-card {
+  padding: 35px;
+  border-radius: 35px;
+  text-align: left;
+  transition: 0.3s;
+}
+
+.bubble-card {
+  background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(220,252,231,0.9));
+  border: 2px solid rgba(255,255,255,0.9);
+  box-shadow: 0 18px 35px rgba(22,163,74,0.14), inset 0 0 20px rgba(255,255,255,0.9);
+}
+
+.challenge-card:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+.challenge-card h2 {
+  font-size: 25px;
+}
+
+.challenge-card p {
+  color: #4b5563;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.challenge-card span {
+  display: inline-block;
+  margin-top: 15px;
+  background: #16a34a;
+  color: white;
+  padding: 10px 18px;
+  border-radius: 999px;
   font-weight: bold;
+}
+
+.chef-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+  background: linear-gradient(135deg, #0f172a, #064e3b);
+  color: white;
+}
+
+.chef-text {
+  text-align: left;
+}
+
+.chef-text p {
+  font-size: 20px;
+  line-height: 1.7;
+  color: #dcfce7;
+}
+
+.chef-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+}
+
+.chef-card {
+  background: rgba(255,255,255,0.14);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 32px;
+  padding: 35px;
+  font-size: 60px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+
+.chef-card:hover {
+  transform: translateY(-10px) rotate(1deg);
+}
+
+.chef-card h2 {
+  font-size: 22px;
+  margin-bottom: 0;
 }
 
 .ad-banner {
@@ -257,8 +352,59 @@ body {
   color: #d1fae5;
 }
 
+.page-header {
+  text-align: center;
+  padding: 100px 30px;
+  background: linear-gradient(135deg, #dcfce7, #ffffff);
+}
+
+.green-header {
+  background: linear-gradient(135deg, #16a34a, #064e3b);
+  color: white;
+}
+
+.green-header p {
+  color: #dcfce7;
+}
+
+.split-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  padding: 90px 80px;
+  align-items: center;
+}
+
+.info-list {
+  display: grid;
+  gap: 25px;
+}
+
+.contact-section {
+  padding: 80px 30px;
+  background: white;
+}
+
+.contact-box {
+  max-width: 600px;
+  margin: auto;
+  display: grid;
+  gap: 20px;
+}
+
+input,
+textarea {
+  padding: 18px;
+  border: 1px solid #d1d5db;
+  border-radius: 14px;
+  font-size: 16px;
+}
+
+textarea {
+  height: 160px;
+}
+
 button {
-  margin-top: 25px;
   padding: 16px 36px;
   border: none;
   background: #22c55e;
@@ -267,12 +413,7 @@ button {
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
-}
-
-button:hover,
-.main-btn:hover,
-.outline-btn:hover {
-  transform: scale(1.04);
+  transition: 0.3s;
 }
 
 .footer {
@@ -289,28 +430,38 @@ button:hover,
 }
 
 @media (max-width: 900px) {
-  .hero {
+  .hero,
+  .split-section {
+    grid-template-columns: 1fr;
     flex-direction: column;
     padding: 60px 30px;
     text-align: center;
   }
 
-  .hero h1 {
-    font-size: 46px;
+  .hero {
+    display: flex;
+  }
+
+  .hero h1,
+  .page-header h1 {
+    font-size: 44px;
   }
 
   .hero-buttons {
     justify-content: center;
   }
 
-  .hero-image-box img {
+  .hero-image-box img,
+  .image-panel img {
     width: 100%;
     height: auto;
   }
 
   .stats-section,
   .card-grid,
-  .feature-list {
+  .game-grid,
+  .chef-section,
+  .chef-grid {
     grid-template-columns: 1fr;
     padding-left: 30px;
     padding-right: 30px;
@@ -319,5 +470,9 @@ button:hover,
   .navbar {
     flex-direction: column;
     gap: 15px;
+  }
+
+  .nav-links {
+    text-align: center;
   }
 }
