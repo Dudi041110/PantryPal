@@ -1,8 +1,8 @@
 # PantryPal
 ## Ideas
-- Minigame
-- Points currency system
-- Expiry date system
-- shopping list system
-- voice assistant
-- recipes
+- No Minigame
+- No Points currency system
+- No Expiry date system
+- No shopping list system
+- No voice assistant
+- No recipes
