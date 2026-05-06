@@ -1,10 +1,17 @@
-
 // =============================
 // FILE: script.js
 // =============================
 
-function showMessage() {
-  alert("Thank you for choosing PantryPal — the smart fridge assistant for families!");
+function validateEmail() {
+  const email = document.getElementById('emailInput').value;
+
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (emailPattern.test(email)) {
+    alert('Thank you! Your email has been submitted to PantryPal.');
+  } else {
+    alert('Please enter a valid email address.');
+  }
 }
 
 // Smooth scrolling for anchor links

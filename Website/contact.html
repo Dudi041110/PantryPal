@@ -16,7 +16,7 @@
   <div class="navbar">
     <div class="logo">PantryPal</div>
     <div class="nav-links">
-      <a href="Home.html">Home</a>
+      <a href="index.html">Home</a>
       <a href="product.html">Product</a>
       <a href="features.html">Features</a>
       <a href="about.html">About</a>
@@ -31,11 +31,12 @@
   </div>
 
   <div class="contact-section">
-    <div class="contact-box">
-      <input type="text" placeholder="Your Name">
-      <input type="email" placeholder="Your Email">
-      <textarea placeholder="Your Message"></textarea>
-      <button onclick="showMessage()">Send Message</button>
+    <div class="contact-box email-only-box">
+      <h2>Join the PantryPal Waitlist</h2>
+      <p>Enter your email to receive updates about PantryPal.</p>
+
+      <input type="email" id="emailInput" placeholder="Enter your email" required>
+      <button onclick="validateEmail()">Submit Email</button>
     </div>
   </div>
 
