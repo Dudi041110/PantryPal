@@ -1,3 +1,8 @@
 # PantryPal
-No
-(All rights reserved to Eyad Gabr only) ps🇧🇸
+## Ideas
+- Minigame
+- Points currency system
+- Expiry date system
+- shopping list system
+- voice assistant
+- recipes
