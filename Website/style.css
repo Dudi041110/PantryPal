@@ -56,14 +56,28 @@ body {
 .hero-text {
   max-width: 600px;
 }
-
+.chef-card.robot {
+  background-image: url('assets/RoboChef.png');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  height: 200px;
+  border-radius: 20px;
+}
 .tagline {
   color: #16a34a;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
-
+.chef-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 16px;
+  display: block;
+}
 .light {
   color: #bbf7d0;
 }
@@ -351,13 +365,20 @@ button:hover {
   font-size: 22px;
   color: #d1fae5;
 }
-
+.robo-img {
+  height: 220px;
+  object-fit: cover;
+  object-position: center top;
+}
 .page-header {
   text-align: center;
   padding: 100px 30px;
   background: linear-gradient(135deg, #dcfce7, #ffffff);
 }
-
+.robo-img {
+  object-fit: cover;
+  object-position: center top;
+}
 .green-header {
   background: linear-gradient(135deg, #16a34a, #064e3b);
   color: white;
