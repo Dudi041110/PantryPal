@@ -1,2 +1,33 @@
-body {
+#base {
+    width: 435px;
+    height: 925px;
+    background-color: black;
+    border-radius: 25px;
+    position: relative;
+}
+
+#AIBG {
+    width: 200px;
+    height: 200px;
+    border-radius: 150px;
+    position: absolute;
+    left: 115px;
+    background-color: white;
+    z-index: 1;
+    top: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+#AI_Assistant {
+    width: 200px;
+    position: relative;
+    z-index: 2;
+    top: 10px;
 }
