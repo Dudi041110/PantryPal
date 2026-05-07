@@ -1,7 +1,7 @@
 from flask import Flask, render_template, jsonify
 
 Customizable_AI_Skins = ["Cat", "Top", "Chef", "Robo", "Default"]
-Equipped_AI = Customizable_AI_Skins[0]
+Equipped_AI = Customizable_AI_Skins[4]
 
 
 app = Flask(__name__)
