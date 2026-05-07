@@ -375,6 +375,9 @@ button:hover {
   padding: 100px 30px;
   background: linear-gradient(135deg, #dcfce7, #ffffff);
 }
+.robo-card {
+  transform: translateY(100px);
+}
 .robo-img {
   object-fit: cover;
   object-position: center top;
