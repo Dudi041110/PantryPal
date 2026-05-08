@@ -327,6 +327,10 @@ button:hover {
   gap: 25px;
 }
 
+.chef-grid  p{
+  font-size: 20px;
+}
+
 .chef-card {
   background: rgba(255,255,255,0.14);
   backdrop-filter: blur(12px);
