@@ -1,65 +1,144 @@
 const AI_img = document.getElementById("AI_Assistant");
 const AIBG = document.getElementById("AIBG");
+const D_Challenge = document.getElementById("Main");
+
+const Points = document.getElementById("Points_Counter");
+const Points_2 = document.getElementById("Points_Counter_2");
+
+const Poppup = document.getElementById("Poppup_bg");
+
+const Shop = document.getElementById("Shop");
+const Close_Shop = document.getElementById("Close_Poppup");
+
+const Skin_Shop = document.getElementById("Skin_Shop");
 
 const AI_Images = {
     Cat: "/static/ai_assets/CatAI.png",
     Top: "/static/ai_assets/TopHatAI.png",
     Chef: "/static/ai_assets/ChefHatAI.png",
     Robo: "/static/ai_assets/RoboChefAI.png",
-    Default: "/static/ai_assets/AbstractAI.png"
+    Default: "/static/ai_assets/AbstractAI_GIF_Cropped.gif"
 };
 
-function getResult() {
-    fetch("/get_result")
-        .then(response => response.json())
-        .then(data => {
-            AI_img.src = AI_Images[data.result] || AI_Images.Default;
+const Skin_Prices = {
+    Cat: 100,
+    Top: 200,
+    Chef: 300,
+    Robo: 500
+};
 
-            if (data.result === "Cat") {
-                AIBG.classList.remove("hidden");
-                AIBG.classList.remove("colored");
-                AIBG.classList.remove("uppies");
-                AIBG.classList.add("visible");
-                AIBG.classList.add("uncolored");
-                AIBG.classList.add("downies");
+let Equipped_AI = "Default";
 
-                AI_img.classList.remove("uppies");
-                AI_img.classList.add("downies");
-            }
-            else if (data.result === "Top") {
-                AIBG.classList.remove("hidden");
-                AIBG.classList.remove("uncolored");
-                AIBG.classList.remove("uppies");
-                AIBG.classList.add("visible");
-                AIBG.classList.add("colored");
-                AIBG.classList.add("downies");
+let CurrentPoints = 1000;
 
-                AI_img.classList.remove("uppies");
-                AI_img.classList.add("downies");
-            }
-            else if (data.result === "Chef") {
-                AIBG.classList.remove("visible");
-                AIBG.classList.add("hidden");
-                AIBG.classList.add("uppies");
-                AIBG.classList.remove("downies");
+let Owned = ["Default"];
 
-                AI_img.classList.remove("downies");
-                AI_img.classList.add("uppies");
-            }
-            else if (data.result === "Robo") {
-                AIBG.classList.remove("visible");
-                AIBG.classList.add("hidden");
-                AIBG.classList.add("uppies");
-                AIBG.classList.remove("downies");
+const AllSkins = ["Cat", "Top", "Chef", "Robo", "Default"];
 
-                AI_img.classList.remove("downies");
-                AI_img.classList.add("uppies");
-            }
-            else {
-                AIBG.classList.remove("visible");
-                AIBG.classList.add("hidden");
-            }
-        });
+function applySkin() {
+    AI_img.src = AI_Images[Equipped_AI];
+    if (Equipped_AI === "Cat") {
+        AIBG.className = "visible uncolored downies";
+        AI_img.className = "Hover downies";
+        D_Challenge.classList.remove("top", "robo", "def");
+        D_Challenge.classList.add("cat");
+    }
+
+    else if (Equipped_AI === "Top") {
+        AIBG.className = "visible colored downies";
+        AI_img.className = "Hover downies";
+        D_Challenge.classList.remove("cat", "robo", "def");
+        D_Challenge.classList.add("top");
+    }
+
+    else if (Equipped_AI === "Chef") {
+        AIBG.className = "hidden uppies";
+        AI_img.className = "Hover uppies";
+        D_Challenge.classList.remove("cat", "top", "robo", "def");
+    }
+
+    else if (Equipped_AI === "Robo") {
+        AIBG.className = "hidden uppies";
+        AI_img.className = "Hover uppies";
+        D_Challenge.classList.remove("cat", "top", "def");
+        D_Challenge.classList.add("robo");
+    }
+
+    else {
+        AIBG.className = "hidden";
+        AI_img.className = "Hover uppies";
+        D_Challenge.classList.remove("cat", "top", "robo");
+        D_Challenge.classList.add("def");
+    }
 }
 
-getResult();
+function updatePoints() {
+    Points.textContent = CurrentPoints;
+    Points_2.textContent = CurrentPoints;
+};
+
+function createShop() {
+    Skin_Shop.innerHTML = "";
+    AllSkins.forEach(function (skin) {
+        const item = document.createElement("div");
+        item.classList.add("Skin_Item");
+        const owned = Owned.includes(skin);
+        let buttonText = "";
+        let priceText = "";
+        if (owned) {
+            buttonText = Equipped_AI === skin ? "Equipped" : "Equip";
+        }
+        else {
+            buttonText = "Buy";
+            priceText = Skin_Prices[skin] + " Coins";
+        }
+        item.innerHTML = `
+            <div class="Skin_Info">
+                <img src="${AI_Images[skin]}" class="Hover">
+                <div>
+                    <h2>${skin}</h2>
+                    <p>${priceText}</p>
+                </div>
+            </div>
+
+            <button class="Skin_Button">
+                ${buttonText}
+            </button>
+        `;
+        const button = item.querySelector(".Skin_Button");
+        button.addEventListener("click", function () {
+            if (!owned) {
+                if (CurrentPoints >= Skin_Prices[skin]) {
+                    CurrentPoints -= Skin_Prices[skin];
+                    Owned.push(skin);
+                    Equipped_AI = skin;
+                    updatePoints();
+                    applySkin();
+                    createShop();
+                }
+            }
+            else {
+                Equipped_AI = skin;
+                applySkin();
+                createShop();
+            }
+        });
+        Skin_Shop.appendChild(item);
+    });
+};
+
+Shop.addEventListener("click", function () {
+    Poppup.classList.remove("hidden");
+    Poppup.classList.add("visible");
+});
+
+Close_Shop.addEventListener("click", function () {
+    Poppup.classList.remove("visible");
+    Poppup.classList.add("hidden");
+});
+
+Poppup.classList.add("hidden");
+
+applySkin();
+updatePoints();
+createShop();
