@@ -7,6 +7,7 @@ const Poppup = document.getElementById("Poppup_bg");
 const Shop = document.getElementById("Shop");
 const Close_Shop = document.getElementById("Close_Poppup");
 const Skin_Shop = document.getElementById("Skin_Shop");
+const Nearing_Expiry = document.getElementById("Nearing_Expiry");
 
 const AI_Images = {
     Cat: "/static/ai_assets/CatAI.png",
@@ -98,6 +99,44 @@ function updatePoints() {
     Points_2.textContent = CurrentPoints;
 };
 
+async function loadExpiry() {
+    const response = await fetch("/get_expiry");
+    const data = await response.json();
+    const oldItems = Nearing_Expiry.querySelectorAll(".Expiry_Item");
+    oldItems.forEach(function (item) {
+        item.remove();
+    });
+    const sorted = Object.entries(data).sort(function (a, b) {
+        return a[1] - b[1];
+    });
+    const closest = sorted.slice(0, 2);
+    closest.forEach(function ([product, days]) {
+        const item = document.createElement("div");
+        item.classList.add("Expiry_Item");
+        let width = 100 - (days / 7) * 100;
+        if (width < 15) {
+            width = 15;
+        }
+        item.innerHTML = `
+            <div class="Expiry_Left">
+                <div class="Expiry_Product">
+                    ${product}
+                </div>
+                <div class="Expiry_Bar_BG">
+                    <div
+                        class="Expiry_Bar"
+                        style="transform: scaleX(${width / 100});"
+                    ></div>
+                </div>
+            </div>
+            <div class="Expiry_Days">
+                ${days} day${days !== 1 ? "s" : ""}
+            </div>
+        `;
+        Nearing_Expiry.appendChild(item);
+    });
+}
+
 function createShop() {
     Skin_Shop.innerHTML = "";
     AllSkins.forEach(function (skin) {
@@ -163,3 +202,4 @@ Close_Shop.addEventListener("click", function () {
 Poppup.classList.add("hidden");
 
 loadData();
+loadExpiry();

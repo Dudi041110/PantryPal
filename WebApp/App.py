@@ -12,6 +12,13 @@ DEFAULT_DATA = {
     "owned": ["Default"]
 }
 
+EXPIRY_DATA = {
+    "Flour": 1,
+    "Eggs": 3,
+    "Butter": 7,
+    "Milk": 2
+}
+
 def load_data():
     if not os.path.exists(SAVE_FILE):
         save_data(DEFAULT_DATA)
@@ -39,6 +46,10 @@ def save_player_data():
     return jsonify({
         "status": "success"
     })
+
+@app.route("/get_expiry")
+def get_expiry():
+    return jsonify(EXPIRY_DATA)
 
 if __name__ == "__main__":
     app.run(debug=True)
