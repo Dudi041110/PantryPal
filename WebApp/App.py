@@ -13,7 +13,7 @@ DEFAULT_DATA = {
 }
 
 EXPIRY_DATA = {
-    "Flour": 1,
+    "Beef": 1,
     "Eggs": 3,
     "Butter": 7,
     "Milk": 2

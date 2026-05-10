@@ -283,9 +283,14 @@
     margin-top: 20px;
 }
 
+#Nearing_Expiry:hover {
+    z-index: 9999;
+}
+
 #Nearing_Expiry h1 {
     color: #F84E4E;
     margin: 0;
+    font-size: 30px;
 }
 
 .Expiry_Item {
@@ -326,7 +331,7 @@
 
 .Expiry_Days {
     color: #F84E4E;
-    font-size: 15px;
+    font-size: 20px;
     min-width: 55px;
     text-align: right;
 }
@@ -337,4 +342,37 @@
 
 .lround {
     border-radius: 25px 0 0 25px;
+}
+
+#Grocery p {
+    color: white;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    align-self: center;
+    font-size: 30px;
+}
+
+#Grocery h1 {
+    color: #98FE99;
+    align-self: center;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    font-size: 40px;
+}
+
+#Grocery {
+    width: 400px;
+    height: 200px;
+    margin-top: 20px;
+    background-color: #343535;
+    position: relative;
+    border-radius: 25px;
+    box-shadow: 0px 0px 20px #98FE99;
+    box-shadow: 0px 0px 20px #98FE99;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7%;
+    z-index: 300;
 }
