@@ -1,15 +1,11 @@
 const AI_img = document.getElementById("AI_Assistant");
 const AIBG = document.getElementById("AIBG");
 const D_Challenge = document.getElementById("Main");
-
 const Points = document.getElementById("Points_Counter");
 const Points_2 = document.getElementById("Points_Counter_2");
-
 const Poppup = document.getElementById("Poppup_bg");
-
 const Shop = document.getElementById("Shop");
 const Close_Shop = document.getElementById("Close_Poppup");
-
 const Skin_Shop = document.getElementById("Skin_Shop");
 
 const AI_Images = {
@@ -131,34 +127,25 @@ function createShop() {
             </button>
         `;
         const button = item.querySelector(".Skin_Button");
-
         button.addEventListener("click", async function () {
             if (!owned) {
                 if (CurrentPoints >= Skin_Prices[skin]) {
                     CurrentPoints -= Skin_Prices[skin];
                     Owned.push(skin);
                     Equipped_AI = skin;
-
                     updatePoints();
                     applySkin();
-
                     await saveData();
-
                     createShop();
                 }
             }
-
             else {
                 Equipped_AI = skin;
-
                 applySkin();
-
                 await saveData();
-
                 createShop();
             }
         });
-
         Skin_Shop.appendChild(item);
     });
 };
