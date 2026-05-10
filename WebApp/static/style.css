@@ -48,7 +48,6 @@
 #AI_Assistant {
     width: 200px;
     position: relative;
-    top: 0px;
 }
 
 .Hover {
@@ -264,4 +263,8 @@
 
 #Skin_Shop img {
     transition: all 0.3s ease;
+}
+
+#Main {
+    position: relative;
 }
