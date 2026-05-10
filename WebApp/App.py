@@ -8,7 +8,7 @@ SAVE_FILE = "player_data.json"
 
 DEFAULT_DATA = {
     "equipped_ai": "Default",
-    "points": 1000,
+    "points": 0,
     "owned": ["Default"]
 }
 
