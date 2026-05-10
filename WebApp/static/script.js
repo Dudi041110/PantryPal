@@ -4,6 +4,7 @@ const D_Challenge = document.getElementById("Main");
 const Points = document.getElementById("Points_Counter");
 const Points_2 = document.getElementById("Points_Counter_2");
 const Poppup = document.getElementById("Poppup_bg");
+const Poppup_Screen = document.getElementById("Poppup");
 const Shop = document.getElementById("Shop");
 const Close_Shop = document.getElementById("Close_Poppup");
 const Skin_Shop = document.getElementById("Skin_Shop");
@@ -177,6 +178,10 @@ function createShop() {
                     await saveData();
                     createShop();
                 }
+                if (Owned.length >= 3) {
+                    Poppup_Screen.classList.remove("lround");
+                    Poppup_Screen.classList.add("rround");
+                }
             }
             else {
                 Equipped_AI = skin;
@@ -192,6 +197,10 @@ function createShop() {
 Shop.addEventListener("click", function () {
     Poppup.classList.remove("hidden");
     Poppup.classList.add("visible");
+    if (Owned.length >= 3) {
+        Poppup_Screen.classList.remove("lround");
+        Poppup_Screen.classList.add("rround");
+    }
 });
 
 Close_Shop.addEventListener("click", function () {

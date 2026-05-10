@@ -185,7 +185,6 @@
     position: absolute;
     top: 10%;
     left: 12.5%;
-    border-radius: 25px 0 0 25px;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -330,4 +329,12 @@
     font-size: 15px;
     min-width: 55px;
     text-align: right;
+}
+
+.rround {
+    border-radius: 25px;
+}
+
+.lround {
+    border-radius: 25px 0 0 25px;
 }
