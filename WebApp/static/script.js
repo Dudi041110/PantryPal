@@ -35,6 +35,31 @@ let Owned = ["Default"];
 
 const AllSkins = ["Cat", "Top", "Chef", "Robo", "Default"];
 
+async function loadData() {
+    const response = await fetch("/get_data");
+    const data = await response.json();
+    CurrentPoints = data.points;
+    Equipped_AI = data.equipped_ai;
+    Owned = data.owned;
+    updatePoints();
+    applySkin();
+    createShop();
+}
+
+async function saveData() {
+    await fetch("/save_data", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            equipped_ai: Equipped_AI,
+            points: CurrentPoints,
+            owned: Owned
+        })
+    });
+}
+
 function applySkin() {
     AI_img.src = AI_Images[Equipped_AI];
     if (Equipped_AI === "Cat") {
@@ -106,23 +131,34 @@ function createShop() {
             </button>
         `;
         const button = item.querySelector(".Skin_Button");
-        button.addEventListener("click", function () {
+
+        button.addEventListener("click", async function () {
             if (!owned) {
                 if (CurrentPoints >= Skin_Prices[skin]) {
                     CurrentPoints -= Skin_Prices[skin];
                     Owned.push(skin);
                     Equipped_AI = skin;
+
                     updatePoints();
                     applySkin();
+
+                    await saveData();
+
                     createShop();
                 }
             }
+
             else {
                 Equipped_AI = skin;
+
                 applySkin();
+
+                await saveData();
+
                 createShop();
             }
         });
+
         Skin_Shop.appendChild(item);
     });
 };
@@ -139,6 +175,4 @@ Close_Shop.addEventListener("click", function () {
 
 Poppup.classList.add("hidden");
 
-applySkin();
-updatePoints();
-createShop();
+loadData();
