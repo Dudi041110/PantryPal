@@ -61,35 +61,22 @@ function applySkin() {
     if (Equipped_AI === "Cat") {
         AIBG.className = "visible uncolored downies";
         AI_img.className = "Hover downies";
-        D_Challenge.classList.remove("top", "robo", "def");
-        D_Challenge.classList.add("cat");
     }
-
     else if (Equipped_AI === "Top") {
         AIBG.className = "visible colored downies";
         AI_img.className = "Hover downies";
-        D_Challenge.classList.remove("cat", "robo", "def");
-        D_Challenge.classList.add("top");
     }
-
     else if (Equipped_AI === "Chef") {
         AIBG.className = "hidden uppies";
         AI_img.className = "Hover uppies";
-        D_Challenge.classList.remove("cat", "top", "robo", "def");
     }
-
     else if (Equipped_AI === "Robo") {
         AIBG.className = "hidden uppies";
         AI_img.className = "Hover uppies";
-        D_Challenge.classList.remove("cat", "top", "def");
-        D_Challenge.classList.add("robo");
     }
-
     else {
         AIBG.className = "hidden";
         AI_img.className = "Hover uppies";
-        D_Challenge.classList.remove("cat", "top", "robo");
-        D_Challenge.classList.add("def");
     }
 }
 
