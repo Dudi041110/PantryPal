@@ -50,6 +50,10 @@
     position: relative;
 }
 
+#AI_Assistant:hover {
+    cursor: pointer;
+}
+
 .Hover {
     transition: transform 0.3s ease;
 }
