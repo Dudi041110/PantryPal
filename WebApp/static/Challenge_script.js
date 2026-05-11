@@ -1,6 +1,3 @@
-const AI_img = document.getElementById("AI_Assistant");
-const AIBG = document.getElementById("AIBG");
-const D_Challenge = document.getElementById("Main");
 const Points = document.getElementById("Points_Counter");
 const Points_2 = document.getElementById("Points_Counter_2");
 const Poppup = document.getElementById("Poppup_bg");
@@ -8,8 +5,8 @@ const Poppup_Screen = document.getElementById("Poppup");
 const Shop = document.getElementById("Shop");
 const Close_Shop = document.getElementById("Close_Poppup");
 const Skin_Shop = document.getElementById("Skin_Shop");
-const Nearing_Expiry = document.getElementById("Nearing_Expiry");
-const Challenge_btn = document.getElementById("Challenge");
+const AI_img = document.getElementById("AI_Assistant");
+const AIBG = document.getElementById("AIBG");
 
 const AI_Images = {
     Cat: "/static/ai_assets/CatAI.png",
@@ -35,7 +32,7 @@ let Owned = ["Default"];
 const AllSkins = ["Cat", "Top", "Chef", "Robo", "Default"];
 
 async function loadData() {
-    const response = await fetch("/get_data");
+    const response = await fetch("/Challenge/get_data");
     const data = await response.json();
     CurrentPoints = data.points;
     Equipped_AI = data.equipped_ai;
@@ -46,7 +43,7 @@ async function loadData() {
 }
 
 async function saveData() {
-    await fetch("/save_data", {
+    await fetch("/Challenge/save_data", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -100,44 +97,6 @@ function updatePoints() {
     Points.textContent = CurrentPoints;
     Points_2.textContent = CurrentPoints;
 };
-
-async function loadExpiry() {
-    const response = await fetch("/get_expiry");
-    const data = await response.json();
-    const oldItems = Nearing_Expiry.querySelectorAll(".Expiry_Item");
-    oldItems.forEach(function (item) {
-        item.remove();
-    });
-    const sorted = Object.entries(data).sort(function (a, b) {
-        return a[1] - b[1];
-    });
-    const closest = sorted.slice(0, 2);
-    closest.forEach(function ([product, days]) {
-        const item = document.createElement("div");
-        item.classList.add("Expiry_Item");
-        let width = 100 - (days / 7) * 100;
-        if (width < 15) {
-            width = 15;
-        }
-        item.innerHTML = `
-            <div class="Expiry_Left">
-                <div class="Expiry_Product">
-                    ${product}
-                </div>
-                <div class="Expiry_Bar_BG">
-                    <div
-                        class="Expiry_Bar"
-                        style="transform: scaleX(${width / 100});"
-                    ></div>
-                </div>
-            </div>
-            <div class="Expiry_Days">
-                ${days} day${days !== 1 ? "s" : ""}
-            </div>
-        `;
-        Nearing_Expiry.appendChild(item);
-    });
-}
 
 function createShop() {
     Skin_Shop.innerHTML = "";
@@ -209,11 +168,6 @@ Close_Shop.addEventListener("click", function () {
     Poppup.classList.add("hidden");
 });
 
-Challenge_btn.addEventListener("click", function () {
-    window.location.href = "/Challenge";
-});
-
 Poppup.classList.add("hidden");
 
 loadData();
-loadExpiry();

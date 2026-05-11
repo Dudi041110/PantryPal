@@ -51,5 +51,22 @@ def save_player_data():
 def get_expiry():
     return jsonify(EXPIRY_DATA)
 
+@app.route("/Challenge")
+def challenge():
+    return render_template("Challenge.html")
+
+@app.route("/Challenge/get_data")
+def get_data_challenge():
+    data = load_data()
+    return jsonify(data)
+
+@app.route("/Challenge/save_data", methods=["POST"])
+def save_player_data_challenge():
+    data = request.json
+    save_data(data)
+    return jsonify({
+        "status": "success"
+    })
+
 if __name__ == "__main__":
     app.run(debug=True)
