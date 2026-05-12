@@ -28,7 +28,7 @@ const Skin_Prices = {
 
 let Equipped_AI = "Default";
 
-let CurrentPoints = 1000;
+let CurrentPoints = 0;
 
 let Owned = ["Default"];
 
@@ -46,16 +46,19 @@ async function loadData() {
 }
 
 async function saveData() {
+    const response = await fetch("/get_data");
+    const oldData = await response.json();
+
+    oldData.equipped_ai = Equipped_AI;
+    oldData.points = CurrentPoints;
+    oldData.owned = Owned;
+
     await fetch("/save_data", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-            equipped_ai: Equipped_AI,
-            points: CurrentPoints,
-            owned: Owned
-        })
+        body: JSON.stringify(oldData)
     });
 }
 

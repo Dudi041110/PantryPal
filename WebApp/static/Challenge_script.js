@@ -34,25 +34,45 @@ const AllSkins = ["Cat", "Top", "Chef", "Robo", "Default"];
 async function loadData() {
     const response = await fetch("/Challenge/get_data");
     const data = await response.json();
+
     CurrentPoints = data.points;
     Equipped_AI = data.equipped_ai;
     Owned = data.owned;
+
     updatePoints();
     applySkin();
     createShop();
+
+    setupRedeemButtons();
+
+    if (data.redeemed_challenges) {
+        data.redeemed_challenges.forEach(function(challengeID) {
+            const button = document.querySelector(
+                `[data-challenge="${challengeID}"]`
+            );
+
+            if (button) {
+                button.textContent = "Redeemed";
+                button.disabled = true;
+            }
+        });
+    }
 }
 
 async function saveData() {
+    const response = await fetch("/Challenge/get_data");
+    const oldData = await response.json();
+
+    oldData.equipped_ai = Equipped_AI;
+    oldData.points = CurrentPoints;
+    oldData.owned = Owned;
+
     await fetch("/Challenge/save_data", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-            equipped_ai: Equipped_AI,
-            points: CurrentPoints,
-            owned: Owned
-        })
+        body: JSON.stringify(oldData)
     });
 }
 
@@ -156,5 +176,40 @@ Close_Shop.addEventListener("click", function () {
 });
 
 Poppup.classList.add("hidden");
+
+async function redeemChallenge(button) {
+    const challengeID = button.dataset.challenge;
+
+    const response = await fetch(`/Challenge/redeem/${challengeID}`, {
+        method: "POST"
+    });
+
+    const data = await response.json();
+
+    if (data.status === "already_redeemed") {
+        button.textContent = "Redeemed";
+        button.disabled = true;
+        return;
+    }
+
+    if (data.status === "success") {
+        CurrentPoints = data.new_total;
+
+        updatePoints();
+
+        button.textContent = `+${data.points_added} Points`;
+        button.disabled = true;
+    }
+}
+
+function setupRedeemButtons() {
+    const buttons = document.querySelectorAll("[data-challenge]");
+
+    buttons.forEach(function(button) {
+        button.addEventListener("click", async function() {
+            await redeemChallenge(button);
+        });
+    });
+}
 
 loadData();
