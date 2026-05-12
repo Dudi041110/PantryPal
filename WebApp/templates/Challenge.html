@@ -31,6 +31,32 @@
                         <div id="Skin_Shop"></div>
                     </div>
                 </div>
+                <h1 id="Challenge_Header">
+                    Challenges
+                </h1>
+                <div id="Main">
+                    <div id="Daily_Challenge" class="Hover">
+                        <h1>
+                            Daily Challenge
+                        </h1>
+                        <h2>
+                            Bake a Cake
+                        </h2>
+                        <p>
+                            1 hour
+                        </p>
+                        <p>
+                            3,000 calories
+                        </p>
+                        <p>
+                            +500 points
+                        </p>
+                        <img id="Cake" src="{{ url_for('static', filename='other_assets/Cake.png') }}" alt="Cake" width="225px">
+                        <button id="Daily_Redeem" class="Hover">
+                            Redeem
+                        </button>
+                    </div>
+                </div>
             </div>
         </center>
         <script src="{{ url_for('static', filename='Challenge_script.js')}}"></script>
