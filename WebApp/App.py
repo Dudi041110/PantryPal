@@ -143,5 +143,76 @@ def redeem_challenge(challenge_id):
 def expiry():
     return render_template("Expiry.html")
 
+@app.route("/Shopping")
+def shopping():
+    return render_template("Shopping.html")
+ 
+@app.route("/Shopping/get_list")
+def get_shopping_list():
+    data = load_data()
+    raw = data.get("shopping_list", ["Bread", "Yogurt", "Chicken"])
+    # Normalise: support both plain strings and dicts
+    items = []
+    for i, entry in enumerate(raw):
+        if isinstance(entry, dict):
+            items.append({"index": i, "name": entry["name"], "checked": entry.get("checked", False)})
+        else:
+            items.append({"index": i, "name": str(entry), "checked": False})
+    return jsonify({"items": items})
+ 
+@app.route("/Shopping/add_item", methods=["POST"])
+def add_shopping_item():
+    data = load_data()
+    raw = data.get("shopping_list", [])
+    new_item = {"name": request.json.get("name", ""), "checked": False}
+    raw.append(new_item)
+    data["shopping_list"] = raw
+    save_data(data)
+    return _list_response(raw)
+ 
+@app.route("/Shopping/toggle_item", methods=["POST"])
+def toggle_shopping_item():
+    data = load_data()
+    raw = data.get("shopping_list", [])
+    index = request.json.get("index", -1)
+    if 0 <= index < len(raw):
+        item = raw[index]
+        if isinstance(item, str):
+            item = {"name": item, "checked": False}
+        item["checked"] = not item.get("checked", False)
+        raw[index] = item
+    data["shopping_list"] = raw
+    save_data(data)
+    return _list_response(raw)
+ 
+@app.route("/Shopping/delete_item", methods=["POST"])
+def delete_shopping_item():
+    data = load_data()
+    raw = data.get("shopping_list", [])
+    index = request.json.get("index", -1)
+    if 0 <= index < len(raw):
+        raw.pop(index)
+    data["shopping_list"] = raw
+    save_data(data)
+    return _list_response(raw)
+ 
+@app.route("/Shopping/clear_checked", methods=["POST"])
+def clear_checked_items():
+    data = load_data()
+    raw = data.get("shopping_list", [])
+    raw = [i for i in raw if not (isinstance(i, dict) and i.get("checked", False))]
+    data["shopping_list"] = raw
+    save_data(data)
+    return _list_response(raw)
+ 
+def _list_response(raw):
+    items = []
+    for i, entry in enumerate(raw):
+        if isinstance(entry, dict):
+            items.append({"index": i, "name": entry["name"], "checked": entry.get("checked", False)})
+        else:
+            items.append({"index": i, "name": str(entry), "checked": False})
+    return jsonify({"items": items})
+
 if __name__ == "__main__":
     app.run(debug=True)

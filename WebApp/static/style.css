@@ -398,6 +398,10 @@ body.challenge-page #Daily_Challenge {
     font-size: 30px;
 }
 
+#Grocery:hover {
+    cursor: pointer;
+}
+
 #Grocery h1 {
     color: #98FE99;
     align-self: center;
@@ -557,4 +561,181 @@ body.challenge-page .Challenge_Card.Hover:hover {
 
 #Main .Challenge_Card {
     min-height: 150px;
+}
+
+#Shopping_Add_Bar {
+    position: absolute;
+    top: 305px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 390px;
+    display: flex;
+    gap: 8px;
+    z-index: 20;
+}
+ 
+#Shopping_Input {
+    flex: 1;
+    background-color: #222;
+    border: 2px solid #98FE99;
+    border-radius: 14px;
+    color: white;
+    font-size: 17px;
+    padding: 10px 16px;
+    outline: none;
+    font-family: inherit;
+}
+ 
+#Shopping_Input::placeholder {
+    color: #666;
+}
+ 
+#Shopping_Add_Btn {
+    background-color: #98FE99;
+    color: black;
+    border: none;
+    border-radius: 14px;
+    font-size: 28px;
+    font-weight: bold;
+    width: 48px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    line-height: 1;
+    padding-bottom: 3px;
+}
+ 
+#Shopping_Add_Btn:hover {
+    transform: scale(1.1);
+}
+ 
+/* Shopping scrollable main override */
+body.challenge-page #Main.shopping-main {
+    top: 365px;
+    height: 545px;
+    padding: 10px 17px 30px;
+}
+ 
+/* List container */
+#Shopping_List_Container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+ 
+/* Individual item */
+.Shopping_Item {
+    width: 100%;
+    background-color: #222;
+    border-radius: 16px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-sizing: border-box;
+    transition: opacity 0.25s ease;
+}
+ 
+.Shopping_Item.checked {
+    opacity: 0.45;
+}
+ 
+.Shopping_Item_Name {
+    flex: 1;
+    color: white;
+    font-size: 18px;
+    text-align: left;
+}
+ 
+.Shopping_Item.checked .Shopping_Item_Name {
+    text-decoration: line-through;
+    color: #888;
+}
+ 
+/* Check button */
+.Shopping_Check_Btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid #98FE99;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+    flex-shrink: 0;
+}
+ 
+.Shopping_Check_Btn:hover {
+    transform: scale(1.15);
+}
+ 
+.Shopping_Check_Btn.is-checked {
+    background-color: #98FE99;
+}
+ 
+.checkmark {
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+ 
+.Shopping_Check_Btn.is-checked .checkmark {
+    opacity: 1;
+}
+ 
+/* Delete button */
+.Shopping_Delete_Btn {
+    background-color: transparent;
+    border: none;
+    color: #555;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 8px;
+    transition: color 0.2s ease, transform 0.15s ease;
+    flex-shrink: 0;
+}
+ 
+.Shopping_Delete_Btn:hover {
+    color: #F84E4E;
+    transform: scale(1.2);
+}
+ 
+/* Divider between unchecked / checked */
+.Shopping_Divider {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 4px;
+    color: #555;
+    font-size: 14px;
+}
+ 
+.Shopping_Clear_Btn {
+    background-color: transparent;
+    border: 1px solid #444;
+    color: #888;
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+}
+ 
+.Shopping_Clear_Btn:hover {
+    color: #F84E4E;
+    border-color: #F84E4E;
+}
+ 
+/* Empty state */
+.Shopping_Empty {
+    color: #555;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 60px;
+    line-height: 1.6;
 }

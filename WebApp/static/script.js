@@ -220,6 +220,12 @@ Nearing_Expiry.addEventListener("click", function () {
     window.location.href = "/Expiry";
 });
 
+const Grocery_btn = document.getElementById("Grocery");
+ 
+Grocery_btn.addEventListener("click", function () {
+    window.location.href = "/Shopping";
+});
+
 Poppup.classList.add("hidden");
 
 loadData();
