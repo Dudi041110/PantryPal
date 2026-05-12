@@ -216,6 +216,10 @@ Challenge_btn.addEventListener("click", function () {
     window.location.href = "/Challenge";
 });
 
+Nearing_Expiry.addEventListener("click", function () {
+    window.location.href = "/Expiry";
+});
+
 Poppup.classList.add("hidden");
 
 loadData();

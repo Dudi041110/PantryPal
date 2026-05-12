@@ -545,3 +545,16 @@ body.challenge-page .Challenge_Card.Hover:hover {
     cursor: not-allowed !important;
     opacity: 0.7;
 }
+
+#Nearing_Expiry {
+    border: none;
+    cursor: pointer;
+}
+
+#Nearing_Expiry:hover {
+    transform: scale(1.03);
+}
+
+#Main .Challenge_Card {
+    min-height: 150px;
+}

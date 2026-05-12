@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            PantryPal - Nearing Expiry
+        </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body class="challenge-page">
+        <center>
+            <div id="base">
+                <div id="AIBG"></div>
+                <img id="AI_Assistant" class="Hover" alt="AI Assistant" width="200px">
+                <div id="Points_section">
+                    <img id="Points" src="{{ url_for('static', filename='other_assets/Cropped_Coin.gif') }}" alt="Points" class="Hover">
+                    <p id="Points_Counter"></p>
+                </div>
+                <button id="Shop" class="Hover">
+                    <img id="Shop_img" src="{{ url_for('static', filename='other_assets/Shopping_Cart.png') }}" alt="Shop">
+                </button>
+                <div id="Poppup_bg">
+                    <div id="Poppup" class="lround">
+                        <Button id="Close_Poppup" class="Hover">
+                            <img id="Close_btn" src="{{ url_for('static', filename='other_assets/Back_BTN.svg') }}" alt="Close">
+                        </Button>
+                        <div id="Points_section_2">
+                            <img id="Points_2" src="{{ url_for('static', filename='other_assets/Cropped_Coin.gif') }}" alt="Points" class="Hover">
+                            <p id="Points_Counter_2"></p>
+                        </div>
+                        <div id="Skin_Shop"></div>
+                    </div>
+                </div>
+                <h1 id="Challenge_Header">
+                    Nearing Expiry
+                </h1>
+                <div id="Main"></div>
+            </div>
+        </center>
+        <script src="{{ url_for('static', filename='Expiry_script.js') }}"></script>
+        <script src="{{ url_for('static', filename='Overlap_script.js') }}"></script>
+    </body>
+</html>

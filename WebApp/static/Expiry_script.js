@@ -1,3 +1,4 @@
+const Main = document.getElementById("Main");
 const Points = document.getElementById("Points_Counter");
 const Points_2 = document.getElementById("Points_Counter_2");
 const Poppup = document.getElementById("Poppup_bg");
@@ -178,41 +179,53 @@ Close_Shop.addEventListener("click", function () {
 
 Poppup.classList.add("hidden");
 
-async function redeemChallenge(button) {
-    const challengeID = button.dataset.challenge;
-
-    const response = await fetch(`/Challenge/redeem/${challengeID}`, {
-        method: "POST"
-    });
+async function loadExpiryItems() {
+    const response = await fetch("/get_expiry");
 
     const data = await response.json();
 
-    if (data.status === "already_redeemed") {
-        button.textContent = "Redeemed";
-        button.disabled = true;
-        return;
-    }
+    const sorted = Object.entries(data).sort(function(a, b) {
+        return a[1] - b[1];
+    });
 
-    if (data.status === "success") {
-        CurrentPoints = data.new_total;
+    sorted.forEach(function([product, days]) {
 
-        updatePoints();
+        const card = document.createElement("div");
 
-        button.textContent = `+${data.points_added} Points`;
-        button.disabled = true;
+        card.classList.add("Challenge_Card");
+        card.classList.add("Hover");
 
-        await saveData();
-    }
-}
+        let width = 100 - (days / 7) * 100;
 
-function setupRedeemButtons() {
-    const buttons = document.querySelectorAll("[data-challenge]");
+        if (width < 15) {
+            width = 15;
+        }
 
-    buttons.forEach(function(button) {
-        button.addEventListener("click", async function() {
-            await redeemChallenge(button);
-        });
+        card.innerHTML = `
+            <h1>${product}</h1>
+
+            <p>
+                ${days} day${days !== 1 ? "s" : ""} remaining
+            </p>
+
+            <div class="Expiry_Bar_BG"
+                 style="
+                    width: 85%;
+                    margin-left: 27px;
+                    margin-top: 10px;
+                 ">
+
+                <div
+                    class="Expiry_Bar"
+                    style="transform: scaleX(${width / 100});"
+                ></div>
+
+            </div>
+        `;
+
+        Main.appendChild(card);
     });
 }
 
+loadExpiryItems();
 loadData();
