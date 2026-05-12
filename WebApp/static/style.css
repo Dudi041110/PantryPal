@@ -268,30 +268,8 @@
     transition: all 0.3s ease;
 }
 
-/* ── Home page: #Main is positioned, not scrollable ── */
 #Main {
     position: relative;
-}
-
-/* ── Challenge page: scrollable #Main ── */
-body.challenge-page #Main {
-    position: relative;
-    height: 560px;          /* fills remaining space below the header + AI image */
-    overflow-y: auto;
-    overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    padding: 10px 0 30px;
-    box-sizing: border-box;
-    /* hide the scrollbar visually but keep it functional */
-    scrollbar-width: none;       /* Firefox */
-    -ms-overflow-style: none;    /* IE/Edge */
-}
-
-body.challenge-page #Main::-webkit-scrollbar {
-    display: none;               /* Chrome/Safari */
 }
 
 #Nearing_Expiry {
@@ -429,24 +407,4 @@ body.challenge-page #Main::-webkit-scrollbar {
 #Challenge_Header {
     color: #84DFF1;
     font-size: 75px;
-}
-
-/* Redeem button inside the daily challenge card */
-#Daily_Redeem {
-    background-color: #84DFF1 !important;
-    color: black !important;
-    border: none !important;
-    border-radius: 12px !important;
-    padding: 8px 20px !important;
-    font-size: 18px !important;
-    font-weight: bold !important;
-    cursor: pointer !important;
-    position: absolute !important;
-    bottom: 15px !important;
-    left: 16px !important;
-    transition: transform 0.3s ease !important;
-}
-
-#Daily_Redeem:hover {
-    transform: scale(1.08) !important;
 }
